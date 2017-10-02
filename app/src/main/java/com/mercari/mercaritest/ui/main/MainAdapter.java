@@ -33,10 +33,10 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         return list.size();
     }
 
-    public void updateItems(List<ItemViewModel> photos) {
+    public void updateItems(List<ItemViewModel> items) {
         list.clear();
-        list.addAll(photos);
-        notifyItemRangeInserted(0,photos.size());
+        list.addAll(items);
+        notifyItemRangeInserted(0,items.size());
     }
 
     class ItemViewHolder extends BaseViewHolder {

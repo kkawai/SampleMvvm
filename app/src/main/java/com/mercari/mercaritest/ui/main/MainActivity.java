@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.widget.Toast;
 
 import com.mercari.mercaritest.BR;
 import com.mercari.mercaritest.R;
@@ -40,18 +41,33 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         binding.recyclerView.setLayoutManager(gridLayoutManager);
         binding.recyclerView.setAdapter(adapter);
         mainViewModel.setNavigator(this);
+        mainViewModel.fetchHomeData(fromCache(savedInstanceState));
+    }
 
-        //todo fetch home data
+    private List<Item> fromCache(Bundle savedInstanceState) {
+        if (savedInstanceState != null && savedInstanceState.containsKey(CACHE_KEY)) {
+            return savedInstanceState.getParcelableArrayList(CACHE_KEY);
+        }
+        return null;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mainViewModel.list.size() > 0) {
+            outState.putParcelableArrayList(CACHE_KEY, mainViewModel.convert());
+        }
     }
 
     @Override
     public void handleError(Throwable throwable) {
-
+        Toast.makeText(this,R.string.error_message,Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void updateItems(List<Item> items) {
-
+        mainViewModel.populateViewModel(items);
+        adapter.updateItems(mainViewModel.list);
     }
 
     @Override

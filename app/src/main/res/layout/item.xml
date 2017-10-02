@@ -22,7 +22,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitCenter"
-            app:imageUrl="@{viewModel.photoUrl}" />
+            app:imageUrl="@{viewModel.photoUrl}"
+            android:background="@drawable/item_price_background"/>
 
         <TextView
             style="@android:style/TextAppearance.Small"
