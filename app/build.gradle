@@ -20,19 +20,19 @@ repositories {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.mercari.mercaritest"
-        minSdkVersion 21
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -58,10 +58,14 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile "com.android.support:appcompat-v7:${support_library_version}"
-    compile "com.android.support:design:${support_library_version}"
-    compile "com.android.support:cardview-v7:${support_library_version}"
-    compile "com.android.support:support-v4:${support_library_version}"
+    // android support libraries
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+    compile "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
+    compile "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
 
     //You may add library if you need
 
@@ -104,8 +108,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     testCompile 'junit:junit:4.12'
 
 
