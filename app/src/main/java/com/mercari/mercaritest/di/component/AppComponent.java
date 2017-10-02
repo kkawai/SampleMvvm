@@ -4,6 +4,7 @@ package com.mercari.mercaritest.di.component;
 import android.app.Application;
 
 import com.mercari.mercaritest.MercariApp;
+import com.mercari.mercaritest.di.builder.ActivityBuilder;
 import com.mercari.mercaritest.di.module.AppModule;
 
 import javax.inject.Singleton;
@@ -14,7 +15,7 @@ import dagger.android.AndroidInjectionModule;
 
 //todo: add more modules as activities are added
 @Singleton
-@Component(modules = {AndroidInjectionModule.class, AppModule.class})
+@Component(modules = {AndroidInjectionModule.class, AppModule.class, ActivityBuilder.class})
 public interface AppComponent {
 
     @Component.Builder
