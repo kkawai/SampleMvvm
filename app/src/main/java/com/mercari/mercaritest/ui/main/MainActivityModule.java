@@ -1,6 +1,7 @@
 package com.mercari.mercaritest.ui.main;
 
 import android.arch.lifecycle.ViewModelProvider;
+import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 
 import com.mercari.mercaritest.Config;
@@ -26,8 +27,8 @@ public class MainActivityModule {
     }
 
     @Provides
-    MainAdapter provideMainAdapter() {
-        return new MainAdapter();
+    MainAdapter provideMainAdapter(Context context) {
+        return new MainAdapter(context);
     }
 
     @Provides
