@@ -110,8 +110,6 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-
-
     //Viewmodel
     implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
     //annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
@@ -119,5 +117,15 @@ dependencies {
     testImplementation "android.arch.core:core-testing:$rootProject.lifecycle"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    // dependencies for local unit tests
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // UI Testing
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
 
 }
