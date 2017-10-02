@@ -3,6 +3,7 @@ package com.mercari.mercaritest.ui.main;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.v7.widget.GridLayoutManager;
 
+import com.mercari.mercaritest.Config;
 import com.mercari.mercaritest.ViewModelProviderFactory;
 import com.mercari.mercaritest.data.DataManager;
 import com.mercari.mercaritest.utils.rx.SchedulerProvider;
@@ -31,7 +32,7 @@ public class MainActivityModule {
 
     @Provides
     GridLayoutManager provideGridLayoutManager(MainActivity activity) {
-        return new GridLayoutManager(activity, 3);
+        return new GridLayoutManager(activity, Config.GRID_COLUMNS);
     }
 
 }

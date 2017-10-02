@@ -11,6 +11,7 @@ import com.mercari.mercaritest.R;
 import com.mercari.mercaritest.data.model.Item;
 import com.mercari.mercaritest.databinding.ActivityMainBinding;
 import com.mercari.mercaritest.ui.base.BaseActivity;
+import com.mercari.mercaritest.ui.utils.ItemOffsetDecoration;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         super.onCreate(savedInstanceState);
         binding = getViewDataBinding();
         binding.recyclerView.setLayoutManager(gridLayoutManager);
+        binding.recyclerView.addItemDecoration(new ItemOffsetDecoration(this, R.dimen.item_offset));
         binding.recyclerView.setAdapter(adapter);
         mainViewModel.setNavigator(this);
         mainViewModel.fetchHomeData(fromCache(savedInstanceState));

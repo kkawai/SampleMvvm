@@ -3,4 +3,8 @@
     <item name="default_text_spacing" format="float" type="dimen">0.01</item>
     <dimen name="item_vertical_margin">16dp</dimen>
     <dimen name="item_horizontal_margin">6dp</dimen>
+    <dimen name="item_image_size">120dp</dimen>
+    <dimen name="item_image_corner_radius">10dp</dimen>
+    <dimen name="item_sold_image_size">44dp</dimen>
+    <dimen name="item_offset">6dp</dimen>
 </resources>
