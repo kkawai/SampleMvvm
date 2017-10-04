@@ -11,11 +11,11 @@ import io.reactivex.Observable;
 @Singleton
 public class RemoteHomeManager implements HomeHelper {
 
-    @Inject
-    APIInterface apiInterface;
+    private APIInterface apiInterface;
 
     @Inject
-    public RemoteHomeManager() {
+    public RemoteHomeManager(APIInterface apiInterface) {
+        this.apiInterface = apiInterface;
     }
 
     @Override
