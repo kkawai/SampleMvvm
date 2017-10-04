@@ -1,6 +1,7 @@
 package com.mercari.mercaritest.ui.main;
 
 import android.databinding.ObservableArrayList;
+import android.os.Build;
 
 import com.mercari.mercaritest.data.DataManager;
 import com.mercari.mercaritest.data.model.HomeResponse;
@@ -10,6 +11,7 @@ import com.mercari.mercaritest.utils.rx.SchedulerProvider;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Action;
@@ -57,9 +59,13 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
     }
 
     public void populateViewModel(List<Item> items) {
-        for (Item item : items) {
-            list.add(new ItemViewModel(item));
 
+        if (Build.VERSION.SDK_INT >= 24) {
+            list.addAll(items.stream().map(item -> new ItemViewModel(item)).collect(Collectors.toList()));
+        } else {
+            for (Item item : items) {
+                list.add(new ItemViewModel(item));
+            }
         }
     }
 
@@ -72,11 +78,17 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
      * @return ArrayList<Item>
      */
     public ArrayList<Item> convert() {
-        ArrayList<Item> arrayList = new ArrayList<>(list.size());
-        int size = list.size();
-        for (int i=0;i < size;i++) {
-            arrayList.add(list.get(i).getItem());
+
+        if (Build.VERSION.SDK_INT >= 24) {
+            return new ArrayList<>(list.stream().map(ItemViewModel::getItem).collect(Collectors.toList()));
+        } else {
+            ArrayList<Item> arrayList = new ArrayList<>(list.size());
+            int size = list.size();
+            for (int i = 0; i < size; i++) {
+                arrayList.add(list.get(i).getItem());
+            }
+            return arrayList;
         }
-        return arrayList;
     }
+
 }
