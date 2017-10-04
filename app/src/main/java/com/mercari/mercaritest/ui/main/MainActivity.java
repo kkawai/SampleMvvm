@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     public void handleError(Throwable throwable) {
         Toast.makeText(this,R.string.error_message,Toast.LENGTH_LONG).show();
+        throwable.printStackTrace();
     }
 
     @Override

@@ -19,10 +19,12 @@ import io.reactivex.Observable;
 public class LocalHomeManager implements HomeHelper {
 
     private final Context context;
+    private Gson gson;
 
     @Inject
-    public LocalHomeManager(Context context) {
+    public LocalHomeManager(Context context, Gson gson) {
         this.context = context;
+        this.gson = gson;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class LocalHomeManager implements HomeHelper {
                 InputStream is = null;
                 try {
                     is = context.getAssets().open("all.json");
-                    return new Gson().fromJson(new InputStreamReader(is), HomeResponse.class);
+                    return gson.fromJson(new InputStreamReader(is), HomeResponse.class);
                 } finally {
                     if (is != null) {
                         is.close();

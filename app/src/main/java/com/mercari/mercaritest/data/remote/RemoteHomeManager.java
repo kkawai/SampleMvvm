@@ -12,11 +12,14 @@ import io.reactivex.Observable;
 public class RemoteHomeManager implements HomeHelper {
 
     @Inject
+    APIInterface apiInterface;
+
+    @Inject
     public RemoteHomeManager() {
     }
 
     @Override
     public Observable<HomeResponse> getHomeData() {
-        return APIClient.getApi().getHomeData("1");
+        return apiInterface.getHomeData("1");
     }
 }

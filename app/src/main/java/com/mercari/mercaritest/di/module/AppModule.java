@@ -6,6 +6,7 @@ import android.content.Context;
 import com.mercari.mercaritest.data.AppDataManager;
 import com.mercari.mercaritest.data.DataManager;
 import com.mercari.mercaritest.data.HomeHelper;
+import com.mercari.mercaritest.data.NetworkModule;
 import com.mercari.mercaritest.data.local.LocalHomeManager;
 import com.mercari.mercaritest.utils.rx.AppSchedulerProvider;
 import com.mercari.mercaritest.utils.rx.SchedulerProvider;
@@ -40,5 +41,11 @@ public class AppModule {
     @Singleton
     HomeHelper provideHomeHelper(LocalHomeManager localHomeManager) {
         return localHomeManager;
+    }
+
+    @Provides
+    @Singleton
+    NetworkModule provideNetworkModule(NetworkModule networkModule) {
+        return networkModule;
     }
 }
