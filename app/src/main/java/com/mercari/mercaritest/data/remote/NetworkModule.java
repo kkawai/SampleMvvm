@@ -1,6 +1,5 @@
-package com.mercari.mercaritest.data;
+package com.mercari.mercaritest.data.remote;
 
-import com.google.gson.Gson;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.mercari.mercaritest.BuildConfig;
 import com.mercari.mercaritest.Config;
@@ -17,20 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class NetworkModule {
-
-//    @Provides
-//    @Singleton
-//    Cache provideHttpCache(Application application) {
-//        int cacheSize = 10 * 1024 * 1024;
-//        Cache cache = new Cache(application.getCacheDir(), cacheSize);
-//        return cache;
-//    }
-
-    @Provides
-    @Singleton
-    Gson provideGson() {
-        return new Gson();
-    }
 
     @Provides
     @Singleton

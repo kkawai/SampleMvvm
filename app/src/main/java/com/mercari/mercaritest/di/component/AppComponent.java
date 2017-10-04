@@ -4,7 +4,7 @@ package com.mercari.mercaritest.di.component;
 import android.app.Application;
 
 import com.mercari.mercaritest.MercariApp;
-import com.mercari.mercaritest.data.NetworkModule;
+import com.mercari.mercaritest.data.remote.NetworkModule;
 import com.mercari.mercaritest.di.builder.ActivityBuilder;
 import com.mercari.mercaritest.di.module.AppModule;
 

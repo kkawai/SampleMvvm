@@ -3,11 +3,13 @@ package com.mercari.mercaritest.di.module;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.gson.Gson;
 import com.mercari.mercaritest.data.AppDataManager;
 import com.mercari.mercaritest.data.DataManager;
 import com.mercari.mercaritest.data.HomeHelper;
-import com.mercari.mercaritest.data.NetworkModule;
 import com.mercari.mercaritest.data.local.LocalHomeManager;
+import com.mercari.mercaritest.data.remote.NetworkModule;
+import com.mercari.mercaritest.data.remote.RemoteHomeManager;
 import com.mercari.mercaritest.utils.rx.AppSchedulerProvider;
 import com.mercari.mercaritest.utils.rx.SchedulerProvider;
 
@@ -29,6 +31,12 @@ public class AppModule {
     @Singleton
     SchedulerProvider provideSchedulerProvider() {
         return new AppSchedulerProvider();
+    }
+
+    @Provides
+    @Singleton
+    Gson provideGson() {
+        return new Gson();
     }
 
     @Provides
