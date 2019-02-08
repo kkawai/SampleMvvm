@@ -1,4 +1,4 @@
-# mercari-android-test
+# sample-mvvm-android
 Sample of MVVM Architecture of a basic commerce app
 
 ## Description
